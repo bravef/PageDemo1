@@ -20,27 +20,7 @@ public class UserServiceImpl implements UserService {
 
     @Resource
     private UserDao userDao;
-    @Override
-    public int deleteByPrimaryKey(Integer id) {
-        return userDao.deleteByPrimaryKey(id);
-    }
 
-    @Override
-    public int insertSelective(User record) {
-
-        return userDao.insertSelective(record);
-    }
-
-    @Override
-    public User selectByPrimaryKey(Integer id) {
-
-        return userDao.selectByPrimaryKey(id);
-    }
-
-    @Override
-    public int updateByPrimaryKeySelective(User record) {
-        return userDao.updateByPrimaryKeySelective(record);
-    }
 
     @Override
     public List<User> selectUserList() {
@@ -53,11 +33,6 @@ public class UserServiceImpl implements UserService {
         return userDao.selectCount();
     }
 
-    @Override
-    public User loginByUserNameAndPassword(User record) {
-
-        return userDao.loginByUserNameAndPassword(record);
-    }
 
     @Override
     public PageBean<User> findByPage(int currentPage) {

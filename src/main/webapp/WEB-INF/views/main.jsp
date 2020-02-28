@@ -25,7 +25,7 @@
 当前用户：${requestScope.currentUser}-${roleName} 有重定向数据就访问不到<br>
 当前用户：${sessionScope.currentUser}-${roleName} 可以使用<br> --%>
 <hr>
-<a href="add"> 添加用户</a><br>
+<%--<a href="add"> 添加用户</a><br>--%>
 <c:if test="${empty requestScope.pagemsg}">
     没有任何用户信息！
 </c:if>
@@ -39,8 +39,7 @@
             <td>邮件</td>
             <td>联系电话</td>
             <td>职位</td>
-            <td>Edit</td>
-            <td>Delete</td>
+
         </tr>
         </thead>
         <c:forEach items="${requestScope.pagemsg.lists}" var="u">
@@ -51,9 +50,7 @@
                 <th>${u.email }</th>
                 <th>${u.phone }</th>
                 <th>${u.rolename }</th>
-                <th><a href="edit?id=${u.id}">Edit</a></th>
-                <th><a href="delete?id=${u.id}" onclick="return confirm('确定要删除吗')">Delete</a></th>
-            </tr>
+                  </tr>
         </c:forEach>
     </table>
 </c:if>
