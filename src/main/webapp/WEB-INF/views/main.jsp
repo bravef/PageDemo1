@@ -71,6 +71,56 @@
            <a href="${pageContext.request.contextPath }/main?currentPage=${requestScope.pagemsg.totalPage}">[尾页]</a>&nbsp;&nbsp;
        </c:if>
    </span>
+
+
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <a href="${pageContext.request.contextPath}/main?currentPage=1">首页</a>
+            <%--如果当前页为第一页时，就没有上一页这个超链接显示 --%>
+            <c:if test="${requestScope.pagemsg.currPage ==1}">
+                <c:forEach begin="${requestScope.pagemsg.pageStart}" end="${requestScope.pagemsg.pageEnd}" step="1" var="i">
+                    <c:if test="${requestScope.pagemsg.currPage == i}">
+                        ${i}
+                    </c:if>
+                    <c:if test="${requestScope.pagemsg.currPage != i}">
+                        <a href="${pageContext.request.contextPath}/main?currentPage=${i}">${i}</a>
+                    </c:if>
+                </c:forEach>
+                <a href="${pageContext.request.contextPath}/main?currentPage=${requestScope.pagemsg.currPage+1}">下一页</a>
+            </c:if>
+
+            <%--如果当前页不是第一页也不是最后一页，则有上一页和下一页这个超链接显示 --%>
+            <c:if test="${requestScope.pagemsg.currPage > 1 && requestScope.pagemsg.currPage < requestScope.pagemsg.totalPage}">
+                <a href="${pageContext.request.contextPath}/main?currentPage=${requestScope.pagemsg.currPage-1}">上一页</a>
+                <c:forEach begin="${requestScope.pagemsg.pageStart}" end="${requestScope.pagemsg.pageEnd}" step="1" var="i">
+                    <c:if test="${requestScope.pagemsg.currPage == i}">
+                        ${i}
+                    </c:if>
+                    <c:if test="${requestScope.pagemsg.currPage != i}">
+                        <a href="${pageContext.request.contextPath}/main?currentPage=${i}">${i}</a>
+                    </c:if>
+                </c:forEach>
+                <a href="${pageContext.request.contextPath}/main?currentPage=${requestScope.pagemsg.currPage+1}">下一页</a>
+            </c:if>
+
+            <%-- 如果当前页是最后一页，则只有上一页这个超链接显示，下一页没有 --%>
+            <c:if test="${requestScope.pagemsg.currPage == requestScope.pagemsg.totalPage}">
+                <a href="${pageContext.request.contextPath}/main?currentPage=${requestScope.pagemsg.currPage-1}">上一页</a>
+                <c:forEach begin="${requestScope.pagemsg.pageStart}" end="${requestScope.pagemsg.pageEnd}" step="1" var="i">
+                    <c:if test="${requestScope.pagemsg.currPage == i}">
+                        ${i}
+                    </c:if>
+                    <c:if test="${requestScope.pagemsg.currPage != i}">
+                        <a href="${pageContext.request.contextPath}/main?currentPage=${i}">${i}</a>
+                    </c:if>
+                </c:forEach>
+            </c:if>
+            <%--尾页 --%>
+            <%--<a href="${pageContext.request.contextPath}/main?currentPage=${requestScope.pageBean.totalPage}">尾页</a>--%>
+            <a href="${pageContext.request.contextPath }/main?currentPage=${requestScope.pagemsg.totalPage}">[尾页]</a>&nbsp;&nbsp;
         </td>
     </tr>
 </table>

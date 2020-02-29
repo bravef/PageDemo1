@@ -12,6 +12,25 @@ public class PageBean<T> {
     private int totalPage;//总页数
     private List<T> lists;//每页的显示的数据
 
+    private int pageStart;//页数从该页开始显示
+    private int pageEnd;//显示到此页结束
+
+    public int getPageStart() {
+        return pageStart;
+    }
+
+    public void setPageStart(int pageStart) {
+        this.pageStart = pageStart;
+    }
+
+    public int getPageEnd() {
+        return pageEnd;
+    }
+
+    public void setPageEnd(int pageEnd) {
+        this.pageEnd = pageEnd;
+    }
+
     public PageBean() {
         super();
     }
